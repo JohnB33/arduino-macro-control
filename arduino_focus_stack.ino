@@ -1,7 +1,8 @@
 #include <uStepper.h>
 
-#define MAXACCELERATION 1500         //Max acceleration = 1500 Steps/s^2
-#define MAXVELOCITY 1100           //Max velocity = 1100 steps/s
+#define MAXACCELERATION 20000         //Max acceleration = 20000 Steps/s^2
+#define MAXVELOCITY 4000          //Max velocity = 4000 steps/s
+
 
 uStepper stepper(MAXACCELERATION, MAXVELOCITY);
 int a;
@@ -45,6 +46,7 @@ void loop() {
           delay(1);
           }
       }
+      stepper.hardStop(SOFT); // disables motor too
     } 
      else if( D ==-1)
     {
@@ -56,6 +58,7 @@ void loop() {
         while(stepper.getMotorState()){
           delay(1);
         }
+        stepper.hardStop(SOFT); // disables motor too
       }
     }
   }
@@ -72,6 +75,7 @@ void loop() {
         while(stepper.getMotorState()){
           delay(1);
         }
+        stepper.hardStop(SOFT); // disables motor too
       }
 
     } 
@@ -85,10 +89,11 @@ void loop() {
         while(stepper.getMotorState()){
           delay(1);
         }
+        stepper.hardStop(SOFT); // disables motor too
       }
     }
   }
- delay(100);
+
  
  }
 
