@@ -17,6 +17,8 @@ void setup() {
   // put your setup code here, to run once:
   stepper.setup();
   Serial.begin(115200);
+  pinMode(PB6, OUTPUT);
+  
 }
 
 void loop() {
@@ -31,8 +33,24 @@ void loop() {
   }
 
   d=d*0.4; // convert um to steps
-  
 
+  if(cmd==1) {
+    digitalWrite(11,HIGH);
+    delay(200);
+    Serial.println("High");
+    while(1){
+      delay(1);
+      }
+    }
+    if(cmd==0){
+      
+      digitalWrite(11,LOW);
+      delay(200);
+      Serial.println("Low");
+     }
+     cmd=-1;
+  
+ /*
   if(cmd==1)                      // move
   {
     cmd=0; // avoid re-entering loop
@@ -94,6 +112,6 @@ void loop() {
     }
   }
 
- 
+ */
  }
 
